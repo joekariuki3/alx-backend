@@ -38,4 +38,7 @@ class FIFOCache(BaseCaching):
 
         def get(self, key):
             """ retrieve the key if it exists"""
-            return self.cache_data.get(key)
+            if key and key in self.cache_data:
+                value = self.cache_data[key]
+                return value
+            return None
