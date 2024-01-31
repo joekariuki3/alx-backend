@@ -13,6 +13,8 @@ class LIFOCache(BaseCaching):
         super().__init__()
 
     def put(self, key, item):
+        """update or add item  with key to
+        the cache i.e cache_data using LIFO principle"""
         if key and item:
             # if not full
             if not (len(self.cache_data) == super().MAX_ITEMS):
