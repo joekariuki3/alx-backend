@@ -15,7 +15,7 @@ class FIFOCache(BaseCaching):
     def put(self, key, item):
         """update or add item  with key to
         the cache i.e cache_data using FIFO principle"""
-        if key is None or  item is None:
+        if key is None or item is None:
             return
         else:
             # if not full
