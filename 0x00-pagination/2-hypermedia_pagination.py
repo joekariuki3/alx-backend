@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Server class implementation"""
 
 import csv
 import math
@@ -11,10 +12,12 @@ class Server:
     DATA_FILE = "Popular_Baby_Names.csv"
 
     def __init__(self):
+        """initialization of Server class"""
         self.__dataset = None
 
     def dataset(self) -> List[List]:
-        """Cached dataset
+        """Cached dataset returned as
+        list of lists
         """
         if self.__dataset is None:
             with open(self.DATA_FILE) as f:
