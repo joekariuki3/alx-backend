@@ -38,4 +38,9 @@ class LIFOCache(BaseCaching):
 
         def get(self, key):
             """ retrieve the key if it exists"""
-            return self.cache_data.get(key)
+            if key and key in self.cache_data:
+                value = self.cache_data[key]
+                self.cache_data.pop(key)
+                self.cache_data[key] = item
+                return value
+            return None
