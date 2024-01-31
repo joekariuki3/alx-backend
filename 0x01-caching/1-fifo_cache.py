@@ -40,5 +40,7 @@ class FIFOCache(BaseCaching):
             """ retrieve the key if it exists"""
             if key and key in self.cache_data:
                 value = self.cache_data[key]
+                self.cache_data.pop(key)
+                self.cache_data[key] = item
                 return value
             return None
