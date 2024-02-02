@@ -3,6 +3,4 @@ __pycache__
 *~
 *main*
 *.csv
-client.py
-fixtures.py
-utils.py
+*.swp
