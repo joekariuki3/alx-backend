@@ -12,18 +12,18 @@ class Config:
     """Config class containing configurations of our application"""
     LANGUAGES = ["en", "fr"]
 
+    def get_locale(self):
+        """set the default language to english en"""
+        return self.LANGUAGES[0]
 
-def get_locale():
-    """set the default language to english en"""
-    return Config.LANGUAGES[0]
-
-
-def get_timezone():
-    """set the default timezone to utc"""
-    return timezone.utc
+    def get_timezone(self):
+        """set the default timezone to utc"""
+        return timezone.utc
 
 
-babel = Babel(app, get_locale, get_timezone)
+babel = Babel(app,
+              locale_selector=Config.get_locale,
+              timezone_selector=Config.get_timezone)
 
 
 @app.route('/')
