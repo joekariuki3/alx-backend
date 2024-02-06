@@ -14,4 +14,5 @@ def home():
 
 
 if __name__ == '__main__':
+    """execute only when app.py is run as main"""
     app.run()
