@@ -5,6 +5,7 @@ from flask import Flask, render_template, request, g
 from flask_babel import Babel, format_datetime
 from datetime import datetime, timezone
 from typing import Union, Dict
+import pytz
 
 app = Flask(__name__)
 
@@ -67,8 +68,10 @@ def get_timezone() -> str:
         timezone = user_timezone
     try:
         return pytz.timezone(timezone).zone
-    except pytz.timezone.UnknownTimeZoneError:
+    except pytz.exceptions.UnknownTimeZoneError:
         timezone = app.config["BABEL_DEFAULT_TIMEZONE"]
+
+# babel = Babel(app, timezone_selector=get_timezone)
 
 
 def get_user() -> Union[Dict, None]:

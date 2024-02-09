@@ -68,7 +68,7 @@ def get_timezone() -> str:
         timezone = user_timezone
     try:
         return pytz.timezone(timezone).zone
-    except pytz.timezone.UnknownTimeZoneError:
+    except pytz.exceptions.UnknownTimeZoneError:
         timezone = app.config["BABEL_DEFAULT_TIMEZONE"]
         return timezone
 
