@@ -4,7 +4,7 @@
 from flask import Flask, render_template, request, g
 from flask_babel import Babel
 from datetime import datetime, timezone
-from typing import Union
+from typing import Union, Dict
 
 app = Flask(__name__)
 
@@ -40,7 +40,7 @@ def get_locale() -> str:
 # babel = Babel(app, locale_selector=get_locale)
 
 
-def get_user() -> Union[dict, None]:
+def get_user() -> Union[Dict, None]:
     """returns a user of id passed as login_as"""
     user_id = request.args.get("login_as")
 
@@ -53,6 +53,7 @@ def get_user() -> Union[dict, None]:
 def before_request() -> None:
     """sets global user before other requests are done"""
     g.user = get_user()
+    return None
 
 
 @app.route('/')
