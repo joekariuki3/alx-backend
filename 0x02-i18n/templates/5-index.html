@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<HTML>
+	<HEAD>
+		<title>{{ _('Welcome to Holberton') }}</title>
+	</HEAD>
+	<BODY>
+		<H1>{{ _('Hello world!') }}</H1>
+		{% if g.user %}
+		<p> {{ _('You are logged in as %(username)s', username=g.user.name) }}</p>
+		{% else %}
+		<p> {{ _('You are not logged in.') }}</>
+		{% endif%}
+	</BODY>
+</HTML>
