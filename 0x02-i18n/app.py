@@ -2,10 +2,9 @@
 """basic flask app that supports different languages"""
 
 from flask import Flask, render_template, request, g
-from flask_babel import Babel
+from flask_babel import Babel, format_datetime
 from datetime import datetime, timezone
 from typing import Union, Dict
-import pytz
 
 app = Flask(__name__)
 
@@ -70,7 +69,6 @@ def get_timezone() -> str:
         return pytz.timezone(timezone).zone
     except pytz.timezone.UnknownTimeZoneError:
         timezone = app.config["BABEL_DEFAULT_TIMEZONE"]
-        return timezone
 
 
 def get_user() -> Union[Dict, None]:
@@ -92,7 +90,8 @@ def before_request() -> None:
 @app.route('/')
 def home() -> str:
     """returns the home default page"""
-    return render_template('7-index.html')
+    g.time = format_datetime()
+    return render_template('index.html')
 
 
 if __name__ == '__main__':
